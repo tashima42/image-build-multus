@@ -33,7 +33,7 @@ ifeq (,$(filter %$(BUILD_META),$(TAG)))
 $(error TAG $(TAG) needs to end with build metadata: $(BUILD_META))
 endif
 
-REPO ?= rancher
+REPO ?= tashima42
 
 .PHONY: image-build-thin
 image-build-thin: IMAGE = $(REPO)/hardened-multus-cni:$(TAG)
