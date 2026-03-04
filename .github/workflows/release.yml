@@ -56,8 +56,8 @@ jobs:
         prime-repo: rancher
         prime-make-target: push-prime-image-thin
         prime-registry: quay.io
-        prime-username: ${{ secrets.QUAY_REGISTRY_USERNAME }}
-        prime-password: ${{ secrets.QUAY_REGISTRY_PASSWORD }}
+        prime-username: ${{ secrets.QUAY_USERNAME }}
+        prime-password: ${{ secrets.QUAY_PASSWORD }}
 
   push-multiarch-thick:
     permissions:
@@ -106,5 +106,5 @@ jobs:
         prime-repo: rancher
         prime-make-target: push-prime-image-thick
         prime-registry: quay.io
-        prime-username: ${{ secrets.QUAY_REGISTRY_USERNAME }}
-        prime-password: ${{ secrets.QUAY_REGISTRY_PASSWORD }}
+        prime-username: ${{ secrets.QUAY_USERNAME }}
+        prime-password: ${{ secrets.QUAY_PASSWORD }}
