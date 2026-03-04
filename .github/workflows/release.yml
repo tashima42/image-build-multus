@@ -48,12 +48,12 @@ jobs:
       with:
         image: hardened-multus-cni
         tag: ${{ github.event.release.tag_name }}
-        public-repo: rancher
+        public-repo: tashima42
         public-username: ${{ secrets.DOCKERIO_USERNAME }}
         public-password: ${{ secrets.DOCKERIO_PASSWORD }}
         make-target: push-image-thin
 
-        prime-repo: rancher
+        prime-repo: tashima42
         prime-make-target: push-prime-image-thin
         prime-registry: quay.io
         prime-username: ${{ secrets.QUAY_USERNAME }}
@@ -98,12 +98,12 @@ jobs:
       with:
         image: hardened-multus-thick
         tag: ${{ github.event.release.tag_name }}
-        public-repo: rancher
+        public-repo: tashima42
         public-username: ${{ secrets.DOCKERIO_USERNAME }}
         public-password: ${{ secrets.DOCKERIO_PASSWORD }}
         make-target: push-image-thick
 
-        prime-repo: rancher
+        prime-repo: tashima42
         prime-make-target: push-prime-image-thick
         prime-registry: quay.io
         prime-username: ${{ secrets.QUAY_USERNAME }}
