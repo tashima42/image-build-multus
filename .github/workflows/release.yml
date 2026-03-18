@@ -52,6 +52,7 @@ jobs:
         public-username: ${{ secrets.DOCKERIO_USERNAME }}
         public-password: ${{ secrets.DOCKERIO_PASSWORD }}
         make-target: push-image-thin
+        make-target-directory: "build"
 
         prime-repo: tashima42
         prime-make-target: push-prime-image-thin
@@ -102,6 +103,7 @@ jobs:
         public-username: ${{ secrets.DOCKERIO_USERNAME }}
         public-password: ${{ secrets.DOCKERIO_PASSWORD }}
         make-target: push-image-thick
+        make-target-directory: "build"
 
         prime-repo: tashima42
         prime-make-target: push-prime-image-thick
