@@ -57,21 +57,23 @@ jobs:
           secret/data/github/repo/${{ github.repository }}/rancher-prime-stg-registry/credentials password | STAGING_REGISTRY_PASSWORD ;
 
     - name: Build and push thin plugin image - Staging
-      uses: rancher/ecm-distro-tools/actions/publish-image@master
+      uses: tashima42/ecm-distro-tools/actions/publish-image@add-makefile-location-publish-image
       with:
         image: hardened-multus-cni
         tag: ${{ github.event.release.tag_name }}
         push-to-public: false
         make-target: push-image-thin
+        make-target-directory: "build"
 
         prime-repo: rancher
         prime-make-target: push-prime-image-thin
+        prime-make-target-directory: "build"
         prime-registry: ${{ env.STAGING_REGISTRY }}
         prime-username: ${{ env.STAGING_REGISTRY_USERNAME }}
         prime-password: ${{ env.STAGING_REGISTRY_PASSWORD }}
 
     - name: Build and push thin plugin image
-      uses: rancher/ecm-distro-tools/actions/publish-image@master
+      uses: tashima42/ecm-distro-tools/actions/publish-image@add-makefile-location-publish-image
       with:
         image: hardened-multus-cni
         tag: ${{ github.event.release.tag_name }}
@@ -79,9 +81,11 @@ jobs:
         public-username: ${{ env.DOCKER_USERNAME }}
         public-password: ${{ env.DOCKER_PASSWORD }}
         make-target: push-image-thin
+        make-target-directory: "build"
 
         prime-repo: rancher
         prime-make-target: push-prime-image-thin
+        prime-make-target-directory: "build"
         prime-registry: ${{ env.PRIME_REGISTRY }}
         prime-username: ${{ env.PRIME_REGISTRY_USERNAME }}
         prime-password: ${{ env.PRIME_REGISTRY_PASSWORD }}
@@ -134,21 +138,23 @@ jobs:
           secret/data/github/repo/${{ github.repository }}/rancher-prime-stg-registry/credentials password | STAGING_REGISTRY_PASSWORD ;
 
     - name: Build and push thick plugin image - Staging
-      uses: rancher/ecm-distro-tools/actions/publish-image@master
+      uses: tashima42/ecm-distro-tools/actions/publish-image@add-makefile-location-publish-image
       with:
         image: hardened-multus-thick
         tag: ${{ github.event.release.tag_name }}
         push-to-public: false
         make-target: push-image-thick
+        make-target-directory: "build"
 
         prime-repo: rancher
         prime-make-target: push-prime-image-thick
+        prime-make-target-directory: "build"
         prime-registry: ${{ env.STAGING_REGISTRY }}
         prime-username: ${{ env.STAGING_REGISTRY_USERNAME }}
         prime-password: ${{ env.STAGING_REGISTRY_PASSWORD }}
 
     - name: Build and push thick plugin image
-      uses: rancher/ecm-distro-tools/actions/publish-image@master
+      uses: tashima42/ecm-distro-tools/actions/publish-image@add-makefile-location-publish-image
       with:
         image: hardened-multus-thick
         tag: ${{ github.event.release.tag_name }}
@@ -156,9 +162,11 @@ jobs:
         public-username: ${{ env.DOCKER_USERNAME }}
         public-password: ${{ env.DOCKER_PASSWORD }}
         make-target: push-image-thick
+        make-target-directory: "build"
 
         prime-repo: rancher
         prime-make-target: push-prime-image-thick
+        prime-make-target-directory: "build"
         prime-registry: ${{ env.PRIME_REGISTRY }}
         prime-username: ${{ env.PRIME_REGISTRY_USERNAME }}
         prime-password: ${{ env.PRIME_REGISTRY_PASSWORD }}
