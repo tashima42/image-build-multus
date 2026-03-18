@@ -44,7 +44,7 @@ jobs:
         echo "$(make -s log | grep TAG)" >> "$GITHUB_ENV"
 
     - name: Build and push thin plugin image
-      uses: tashima42/ecm-distro-tools/actions/publish-image@add-prime-make-target
+      uses: tashima42/ecm-distro-tools/actions/publish-image@add-makefile-location-publish-image
       with:
         image: hardened-multus-cni
         tag: ${{ github.event.release.tag_name }}
@@ -56,57 +56,6 @@ jobs:
 
         prime-repo: tashima42
         prime-make-target: push-prime-image-thin
-        prime-registry: quay.io
-        prime-username: ${{ secrets.QUAY_USERNAME }}
-        prime-password: ${{ secrets.QUAY_PASSWORD }}
-
-  push-multiarch-thick:
-    permissions:
-      contents: read
-      id-token: write
-    runs-on: ubuntu-latest
-    steps:
-    - name: Remove Unnecessary Tools
-      working-directory: /
-      run: |
-        sudo rm -rf \
-          /home/linuxbrew \
-          /home/packer \
-          /opt/az \
-          /opt/microsoft \
-          /usr/lib/firefox \
-          /usr/lib/google-cloud-sdk \
-          /usr/local/julia* \
-          /usr/local/share/boost \
-          /usr/local/share/chromium \
-          /usr/local/share/powershell \
-          /usr/share/az* \
-          /usr/share/dotnet \
-          /usr/share/miniconda \
-          /usr/share/swift
-        df -khl
-
-    - name: Check out code
-      uses: actions/checkout@v6
-
-    - name: Set the TAG value
-      id: get-TAG
-      run: |
-        echo "$(make -s log | grep TAG)" >> "$GITHUB_ENV"
-
-    - name: Build and push thick plugin image
-      uses: tashima42/ecm-distro-tools/actions/publish-image@add-prime-make-target
-      with:
-        image: hardened-multus-thick
-        tag: ${{ github.event.release.tag_name }}
-        public-repo: tashima42
-        public-username: ${{ secrets.DOCKERIO_USERNAME }}
-        public-password: ${{ secrets.DOCKERIO_PASSWORD }}
-        make-target: push-image-thick
-        make-target-directory: "build"
-
-        prime-repo: tashima42
-        prime-make-target: push-prime-image-thick
         prime-registry: quay.io
         prime-username: ${{ secrets.QUAY_USERNAME }}
         prime-password: ${{ secrets.QUAY_PASSWORD }}
